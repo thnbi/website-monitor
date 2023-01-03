@@ -33,6 +33,7 @@ func sayIntro() {
 }
 
 func showMenu() {
+	fmt.Println("")
 	fmt.Println("1 - Start monitoring")
 	fmt.Println("2 - Show logs")
 	fmt.Println("0 - Exit")
@@ -47,15 +48,23 @@ func readOption() int {
 func startMonitoring() {
 	fmt.Println("")
 	fmt.Println("Monitoring...")
-	site := "https://github.com"
+
+	sites := []string{"https://random-status-code.herokuapp.com", "https://www.github.com", "https://www.google.com"}
+
+	for _, site := range sites {
+		testSite(site)
+	}
+
+}
+
+func testSite(site string) {
 	response, _ := http.Get(site)
 	nameSite := site[8:]
 	if response.StatusCode == 200 {
 		fmt.Println(nameSite, "is up!")
 	} else {
-		fmt.Println("Site is down! status code:", response.StatusCode)
+		fmt.Println(nameSite, "is down! status code:", response.StatusCode)
 	}
-	fmt.Println("")
 }
 
 func showLogs() {
