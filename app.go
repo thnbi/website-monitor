@@ -136,7 +136,6 @@ func registerLogs(site string, status bool) {
 	}
 
 	file.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + site + " - online: " + fmt.Sprint(status) + "\n")
-	fmt.Println(file)
 
 	file.Close()
 }
